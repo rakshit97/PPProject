@@ -34,7 +34,7 @@ void lbpval_data(uint8_t *gray, uint8_t *lbpvals, int numRows, int numCols)
 
 kernel = mod.get_function("lbpval_data")
 
-img = cv2.imread("/home/adarsh/Downloads/image.jpg")
+img = cv2.imread("image.jpg")
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 rows, cols = img.shape
@@ -53,5 +53,6 @@ h_res = numpy.zeros((rows, cols), numpy.uint8)
 cuda.memcpy_dtoh(h_res, d_res)
 
 cv2.imshow('Final', h_res)
+cv2.imwrite('LBP_RES.png', h_res)
 cv2.waitKey(0)
 
